@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import model from "./model";
+import { createStore, StoreProvider } from "easy-peasy";
+import Todos from "./Components/Todos";
+import AddTodo from "./Components/AddTodo";
+import "./App.css";
+
+const store = createStore(model);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StoreProvider store={store}>
+      <div className="Container">
+        <Todos />
+        <AddTodo />
+      </div>
+    </StoreProvider>
   );
 }
 
